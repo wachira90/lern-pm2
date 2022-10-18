@@ -16,7 +16,7 @@ pm2 start app.py -i max --name app1 --interpreter python
 
 ````
 
-## nano process.json
+## nano processes.json
 
 ````
 module.exports = {
@@ -26,4 +26,20 @@ module.exports = {
     exec_mode : "cluster"
   }]
 }
+
+
+pm2 start processes.json
+
+````
+
+
+
+## You can do it using PM2 with restart-delay (5 min=300000 msec):
+````
+$ pm2 start app.py --name covid19-5minInt restart-delay 300000
+````
+
+## Or, you can do it using PM2 with cron (5min = '*/5 * * * *'')
+````
+$ pm2 start app.py --name covid19-5minInt --cron '*/5 * * * *' --no-autorestart
 ````
