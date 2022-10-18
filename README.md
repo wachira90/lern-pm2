@@ -43,3 +43,42 @@ $ pm2 start app.py --name covid19-5minInt restart-delay 300000
 ````
 $ pm2 start app.py --name covid19-5minInt --cron '*/5 * * * *' --no-autorestart
 ````
+
+
+## File : ecosystem.config.js  `pm2 init simple`
+
+( on windows )
+
+ecosystem.config.js
+
+````
+module.exports = {
+  apps : [{
+    name   : "app1",
+    script : "app.py",
+    instances : 4,
+    watch : true,
+    interpreter : "env\\Scripts\\python.exe"
+  }]
+}
+````
+
+## control command
+
+````
+
+# Start all applications
+pm2 start ecosystem.config.js
+
+# Stop all
+pm2 stop ecosystem.config.js
+
+# Restart all
+pm2 restart ecosystem.config.js
+
+# Reload all
+pm2 reload ecosystem.config.js
+
+# Delete all
+pm2 delete ecosystem.config.js
+````
